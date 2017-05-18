@@ -10,9 +10,9 @@ A small project for Software Engineering subject at HUTECH University.
 <li>[TortoiseGit](https://tortoisegit.org/download/)</li>
 <li>[Sourcetree](https://www.sourcetreeapp.com/)</li>
 </ul>
-```
+'''
 $ git clone https://github.com/nready/Simple-Blog-NodeJs-MySQL-Heroku.git
-```
+'''
 ## Install
 
 <p>Prerequisites:</p>
