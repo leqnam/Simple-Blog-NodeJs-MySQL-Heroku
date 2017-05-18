@@ -27,11 +27,11 @@ $ git clone https://github.com/nready/Simple-Blog-NodeJs-MySQL-Heroku.git
 
 
 ## Documents
-[Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
-[Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices).
+- [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
+- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices).
 
 ### Deploying NodeJs on Heroku
-[articles](https://devcenter.heroku.com/categories/nodejs/articles) .
-[deploying](https://devcenter.heroku.com/articles/deploying-nodejs) .
-[heroku-buildpack-nodejs](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-nodejs) .
+- [articles](https://devcenter.heroku.com/categories/nodejs/articles) .
+- [deploying](https://devcenter.heroku.com/articles/deploying-nodejs) .
+- [heroku-buildpack-nodejs](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-nodejs) .
 
