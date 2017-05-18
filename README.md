@@ -6,10 +6,9 @@ A small project for Software Engineering subject at HUTECH University.
 
 <p>Using Git client or Sourcetree to check-out project:</p>
 
-<ul>
-<li>[TortoiseGit](https://tortoisegit.org/download/)</li>
-<li>[Sourcetree](https://www.sourcetreeapp.com/)</li>
-</ul>
+- [TortoiseGit](https://tortoisegit.org/download/)
+- [Sourcetree](https://www.sourcetreeapp.com/)
+
 
 ```sh
 $ git clone https://github.com/nready/Simple-Blog-NodeJs-MySQL-Heroku.git
@@ -25,6 +24,9 @@ $ git clone https://github.com/nready/Simple-Blog-NodeJs-MySQL-Heroku.git
 
 ## Documents
 - [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
+- [start-a-console - Nodejs syntax chapter](https://devcenter.heroku.com/articles/getting-started-with-nodejs#start-a-console).
+- [define-config-vars](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-config-vars).
+- [provision-a-database](https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-a-database).
 - [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices).
 
 ### Deploying NodeJs on Heroku
