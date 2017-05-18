@@ -19,12 +19,9 @@ $ git clone https://github.com/nready/Simple-Blog-NodeJs-MySQL-Heroku.git
 
 <p>Prerequisites:</p>
 
-<ul>
-<li>[Node.js and npm installed](http://nodejs.org/)</li>
-<li>[the Heroku CLI](https://cli.heroku.com/)</li>
-<li>[a free Heroku account](https://signup.heroku.com/signup/dc)</li>
-</ul>
-
+- [Node.js and npm installed](http://nodejs.org/)
+- [the Heroku CLI](https://cli.heroku.com/)
+- [a free Heroku account](https://signup.heroku.com/signup/dc)
 
 ## Documents
 - [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
