@@ -9,7 +9,7 @@ var express = require('express'),
 
 var postsController = require('./controllers/post.js');
   
-// The information showed about the poster
+ 
 var userEmail = 'leqnam@live.com';
 var userDisplayName = 'CNPM';
 var userDescription = 'Công nghệ phần mềm';
