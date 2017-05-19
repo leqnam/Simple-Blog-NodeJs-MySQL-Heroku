@@ -1,0 +1,31 @@
+{
+  "name": "cnpm-hutech",
+  "version": "0.2.6",
+  "description": "A sample Node.js app using Express 4 with MySQL on Heroku",
+  "engines": {
+    "node": "6.10.2"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ejs": "2.5.6",
+    "express": "4.15.2",
+    "fs": "0.0.1-security",
+    "moment": "^2.18.1",
+    "mysql": "^2.13.0",
+    "path": "^0.12.7",
+    "underscore": "^1.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nready/Simple-Blog-NodeJs-MySQL-Heroku/tree/master/source/cnpm-hutech"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
