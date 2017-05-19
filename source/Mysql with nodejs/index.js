@@ -1,10 +1,11 @@
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'test'
-});
+      host     : 'localhost',
+      port     : '3307',
+      user     : 'root',
+      password : 'usbw',
+      database : 'cnpm-hutech'
+  });
 
 connection.connect(function(error){
 	if (!!error) {
@@ -14,7 +15,7 @@ connection.connect(function(error){
 	}
 });
 
-connection.query('SELECT * FROM information', function(err, rows, fields) {
+connection.query('SELECT * FROM category', function(err, rows, fields) {
   if (!err)
     console.log('Dữ liệu là: ', rows);
   else

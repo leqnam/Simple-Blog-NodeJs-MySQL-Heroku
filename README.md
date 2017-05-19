@@ -28,6 +28,10 @@ $ git clone https://github.com/nready/Simple-Blog-NodeJs-MySQL-Heroku.git
 - [define-config-vars](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-config-vars).
 - [provision-a-database](https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-a-database).
 - [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices).
+- [a-simple-mvc-framework-with-node-and-express](http://timstermatic.github.io/blog/2013/08/17/a-simple-mvc-framework-with-node-and-express/).
+- [mysql-node](https://github.com/mysqljs/mysql).
+- [mysql-connection-to-routes-with-express](http://stackoverflow.com/questions/16800418/how-to-properly-pass-mysql-connection-to-routes-with-express-js).
+- [nodejs_callbacks_concept](http://www.tutorialspoint.com/nodejs/nodejs_callbacks_concept.htm).
 
 ### Deploying NodeJs on Heroku
 - [articles](https://devcenter.heroku.com/categories/nodejs/articles) .
