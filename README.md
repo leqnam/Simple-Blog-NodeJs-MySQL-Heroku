@@ -32,6 +32,7 @@ $ git clone https://github.com/nready/Simple-Blog-NodeJs-MySQL-Heroku.git
 - [mysql-node](https://github.com/mysqljs/mysql).
 - [mysql-connection-to-routes-with-express](http://stackoverflow.com/questions/16800418/how-to-properly-pass-mysql-connection-to-routes-with-express-js).
 - [nodejs_callbacks_concept](http://www.tutorialspoint.com/nodejs/nodejs_callbacks_concept.htm).
+- [connect_clearDB_on_heroku](https://www.cleardb.com/developers/connect/paas/heroku).
 
 ### Deploying NodeJs on Heroku
 - [articles](https://devcenter.heroku.com/categories/nodejs/articles) .

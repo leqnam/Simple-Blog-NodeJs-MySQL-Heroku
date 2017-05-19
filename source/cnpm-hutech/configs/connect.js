@@ -6,13 +6,15 @@ var mysql = require('mysql');
 // var connection = mysql.createConnection('mysql://user:pass@host/db?debug=true&charset=BIG5_CHINESE_CI&timezone=-0700');
 
 // Use Pooling connections 
-var pool = mysql.createPool({
-      host     : 'localhost',
-      port     : '3307',
-      user     : 'root',
-      password : 'usbw',
-      database : 'cnpm-hutech'
-  });
+
+// var pool = mysql.createPool({
+//       host     : 'localhost',
+//       port     : '3307',
+//       user     : 'root',
+//       password : 'usbw',
+//       database : 'cnpm-hutech'
+//   });
+var pool = mysql.createPool(process.env.CLEARDB_DATABASE_URL);
 
 // Get records
 exports.getCategories = function(callback) {
