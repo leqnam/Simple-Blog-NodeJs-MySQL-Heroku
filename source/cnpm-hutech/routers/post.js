@@ -7,7 +7,7 @@ var router = express.Router();
 router.get('/', function (req, res) {
   db.getCategories(function (err, results) {
     if (err) {
-      res.send(500, "Server Error");
+      res.send(500, "Lỗi cmnr :(");
       return;
     }
     res.render('post/index', {

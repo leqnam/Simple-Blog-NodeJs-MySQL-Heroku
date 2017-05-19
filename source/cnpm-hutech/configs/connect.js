@@ -1,4 +1,3 @@
-
 'use strict'
 
 var mysql = require('mysql');
@@ -7,41 +6,40 @@ var mysql = require('mysql');
 
 // Use Pooling connections 
 
-// var pool = mysql.createPool({
-//       host     : 'localhost',
-//       port     : '3307',
-//       user     : 'root',
-//       password : 'usbw',
-//       database : 'cnpm-hutech'
-//   });
 var pool;
 
-var env = process.argv[2] || 'dev';
-switch (env) {
-    case 'dev':
-        pool = mysql.createPool({
-          host     : 'localhost',
-          port     : '3307',
-          user     : 'root',
-          password : 'usbw',
-          database : 'cnpm-hutech'
-        });
-        break;
-    case 'prod':
-        pool = mysql.createPool(process.env.CLEARDB_DATABASE_URL);
-        break;
+var dev = false;
+
+if (dev) {
+  pool = mysql.createPool({
+    host: 'localhost',
+    port: '3307',
+    user: 'root',
+    password: 'usbw',
+    database: 'cnpm-hutech'
+  });
+} else {
+  pool = mysql.createPool(process.env.CLEARDB_DATABASE_URL);
 }
 
 // Get records
-exports.getCategories = function(callback) {
+exports.getCategories = function (callback) {
   var sql = "SELECT * FROM category";
   // get a connection from the pool
-  pool.getConnection(function(err, connection) {
-    if(err) { console.log(err); callback(true); return; }
+  pool.getConnection(function (err, connection) {
+    if (err) {
+      console.log(err);
+      callback(true);
+      return;
+    }
     // make the query
-    connection.query(sql, function(err, results) {
+    connection.query(sql, function (err, results) {
       connection.release();
-      if(err) { console.log(err); callback(true); return; }
+      if (err) {
+        console.log(err);
+        callback(true);
+        return;
+      }
       callback(false, results);
     });
   });
