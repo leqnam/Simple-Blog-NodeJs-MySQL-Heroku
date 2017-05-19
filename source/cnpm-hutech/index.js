@@ -4,12 +4,12 @@ var express = require('express'),
     _ = require('underscore'),
     path = require('path'),
     fs = require('fs'),
-    md5 = require('./controllers/md5.js'),
+    md5 = require('./configs/md5.js'),
     app = express();
 
 var postsController = require('./controllers/post.js');
   
- 
+// The information showed about the poster
 var userEmail = 'leqnam@live.com';
 var userDisplayName = 'CNPM';
 var userDescription = 'Công nghệ phần mềm';

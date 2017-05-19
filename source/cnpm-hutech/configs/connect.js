@@ -14,7 +14,23 @@ var mysql = require('mysql');
 //       password : 'usbw',
 //       database : 'cnpm-hutech'
 //   });
-var pool = mysql.createPool(process.env.CLEARDB_DATABASE_URL);
+var pool;
+
+var env = process.argv[2] || 'dev';
+switch (env) {
+    case 'dev':
+        pool = mysql.createPool({
+          host     : 'localhost',
+          port     : '3307',
+          user     : 'root',
+          password : 'usbw',
+          database : 'cnpm-hutech'
+        });
+        break;
+    case 'prod':
+        pool = mysql.createPool(process.env.CLEARDB_DATABASE_URL);
+        break;
+}
 
 // Get records
 exports.getCategories = function(callback) {
