@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : usb server
+Source Server         : localhost 8080
 Source Server Version : 50613
 Source Host           : localhost:3307
 Source Database       : cnpm-hutech
@@ -10,22 +10,20 @@ Target Server Type    : MYSQL
 Target Server Version : 50613
 File Encoding         : 65001
 
-Date: 2017-05-19 11:00:32
+Date: 2017-05-20 22:56:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
-drop table if exists COMMENT;
+DROP TABLE IF EXISTS `comment`;
+DROP TABLE IF EXISTS `post`;
+DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `user`;
 
-drop table if exists POST;
-
-drop table if exists CATEGORY;
-
-drop table if exists USER;
 -- ----------------------------
 -- Table structure for category
 -- ----------------------------
-DROP TABLE IF EXISTS `category`;
+
 CREATE TABLE `category` (
   `CATID` bigint(20) NOT NULL AUTO_INCREMENT,
   `CATNAME` varchar(255) DEFAULT NULL,
@@ -47,7 +45,7 @@ INSERT INTO `category` VALUES ('7', 'Thương mại điện tử', null);
 -- ----------------------------
 -- Table structure for comment
 -- ----------------------------
-DROP TABLE IF EXISTS `comment`;
+
 CREATE TABLE `comment` (
   `CID` bigint(20) NOT NULL AUTO_INCREMENT,
   `PID` bigint(20) DEFAULT NULL,
@@ -59,24 +57,25 @@ CREATE TABLE `comment` (
   KEY `FK_REFERENCE_7` (`UID`),
   CONSTRAINT `FK_REFERENCE_4` FOREIGN KEY (`PID`) REFERENCES `post` (`PID`),
   CONSTRAINT `FK_REFERENCE_7` FOREIGN KEY (`UID`) REFERENCES `user` (`UID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
+INSERT INTO `comment` VALUES ('1', '1', '1', '2017-05-12 17:52:03', 'Hay vá bạn ơi <3');
 
 -- ----------------------------
 -- Table structure for post
 -- ----------------------------
-DROP TABLE IF EXISTS `post`;
+
 CREATE TABLE `post` (
   `PID` bigint(20) NOT NULL AUTO_INCREMENT,
   `UID` int(11) DEFAULT NULL,
   `CATID` bigint(20) DEFAULT NULL,
-  `PTITLE` text DEFAULT NULL,
+  `PTITLE` text,
   `PDESCRIPTION` text,
   `PDATE` datetime DEFAULT NULL,
-  `PASSCODE` text DEFAULT NULL,
+  `PASSCODE` text,
   `PCONTENT` longtext,
   `PMETADATA` text,
   PRIMARY KEY (`PID`),
@@ -84,11 +83,13 @@ CREATE TABLE `post` (
   KEY `FK_REFERENCE_5` (`CATID`),
   CONSTRAINT `FK_REFERENCE_1` FOREIGN KEY (`UID`) REFERENCES `user` (`UID`),
   CONSTRAINT `FK_REFERENCE_5` FOREIGN KEY (`CATID`) REFERENCES `category` (`CATID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
 -- ----------------------------
+INSERT INTO `post` VALUES ('1', '1', '7', 'Cau Hoi Trac Nghiem Tham Khao TMDT', null, '2017-05-02 14:00:24', null, 'Các bạn bấm dzô đây để tải về: http://www.mediafire.com/view/?h0ad8bgdwo4iqxt . Nguồn: Blog 10cth1-2 HUTECH (http://10cth12.nready.net/home/read.php?640)', null);
+INSERT INTO `post` VALUES ('2', '1', '7', 'Tài liệu môn Phần mềm nguồn mở và Thuơng mại điện tử', null, '2017-05-04 14:04:51', null, 'Bấm vào đây để tải: http://www.mediafire.com/?8ch6we2va5x67 . Nguồn: http://10cth12.nready.net/home/read.php?627', null);
 
 -- ----------------------------
 -- Table structure for user
@@ -107,3 +108,4 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'quantri', '1234', 'team@nready.net', null);
+SET FOREIGN_KEY_CHECKS=1;

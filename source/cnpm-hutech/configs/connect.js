@@ -8,7 +8,7 @@ var mysql = require('mysql');
 
 var pool;
 
-var dev = false;
+var dev = true;
 
 if (dev) {
     pool = mysql.createPool({
@@ -92,7 +92,7 @@ exports.getPost = function(pid, callback) {
 };
 
 // Get comment by PID
-exports.getPost = function(pid, callback) {
+exports.getPostComment = function(pid, callback) {
     var sql = "SELECT comment.CID,comment.PID,comment.UID,comment.CDATE,comment.CCOMMENT,user.UNAME,user.UMAIL FROM comment INNER JOIN user ON comment.UID = user.UID where PID = ?";
     // get a connection from the pool
     pool.getConnection(function(err, connection) {
