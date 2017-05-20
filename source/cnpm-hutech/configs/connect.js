@@ -8,7 +8,7 @@ var mysql = require('mysql');
 
 var pool;
 
-var dev = false;
+var dev = true;
 
 if (dev) {
     pool = mysql.createPool({
@@ -47,7 +47,8 @@ exports.getCategories = function(callback) {
 
 // Get all posts
 exports.getPosts = function(callback) {
-    var sql = "select post.pid, post.uid, category.catid, category.catname, post.ptitle, post.pdescription from post, category WHERE post.catid = category.catid";
+    //var sql = "select post.pid, post.uid, category.catid, category.catname, post.ptitle, post.pdescription from post, category WHERE post.catid = category.catid";
+    var sql = "select * from post";
     // get a connection from the pool
     pool.getConnection(function(err, connection) {
         if (err) {
