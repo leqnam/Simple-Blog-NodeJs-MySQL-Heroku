@@ -1,0 +1,51 @@
+<% include ../components/header.ejs %>
+    <div class="col-sm-9 col-sm-offset-3">
+        <div class="page-header">
+            <h1>CNPM</h1>
+        </div>
+
+
+        <% posts.forEach(function(post) { %>
+            <article class="home">
+
+                <span class="post-date"><%= post.PDATE %></span>
+
+                <h2>
+                    <a href="<%= '/posts/' + post.CATID %>">
+                        <%= post.PTITLE %>
+                    </a>
+                </h2>
+
+                <div>
+                    <%= post.pdescription %>
+                </div>
+
+            </article>
+            <% }) %>
+                <hr/>
+
+                <ul class="pager">
+
+
+                    <li class="previous disabled">
+                        <a>&larr; Newer</a>
+                    </li>
+
+
+                    <li>
+                        <span class="page_number">Page: 1 of 4</span>
+                    </li>
+
+
+                    <li class="next">
+                        <a href="/page2">Older &rarr;</a>
+                    </li>
+
+
+                </ul>
+
+                <% include ../components/credit.ejs %>
+
+    </div>
+
+    <% include ../components/footer.ejs %>

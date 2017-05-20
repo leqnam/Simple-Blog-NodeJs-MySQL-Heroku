@@ -11,38 +11,61 @@ var pool;
 var dev = false;
 
 if (dev) {
-  pool = mysql.createPool({
-    host: 'localhost',
-    port: '3307',
-    user: 'root',
-    password: 'usbw',
-    database: 'cnpm-hutech'
-  });
+    pool = mysql.createPool({
+        host: 'localhost',
+        port: '3307',
+        user: 'root',
+        password: 'usbw',
+        database: 'cnpm-hutech'
+    });
 } else {
-  pool = mysql.createPool(process.env.CLEARDB_DATABASE_URL);
+    pool = mysql.createPool(process.env.CLEARDB_DATABASE_URL);
 }
 
-// Get records
-exports.getCategories = function (callback) {
-  var sql = "SELECT * FROM category";
-  // get a connection from the pool
-  pool.getConnection(function (err, connection) {
-    if (err) {
-      console.log(err);
-      callback(true);
-      return;
-    }
-    // make the query
-    connection.query(sql, function (err, results) {
-      connection.release();
-      if (err) {
-        console.log(err);
-        callback(true);
-        return;
-      }
-      callback(false, results);
+// Get Category records
+exports.getCategories = function(callback) {
+    var sql = "SELECT * FROM category";
+    // get a connection from the pool
+    pool.getConnection(function(err, connection) {
+        if (err) {
+            console.log(err);
+            callback(true);
+            return;
+        }
+        // make the query
+        connection.query(sql, function(err, results) {
+            connection.release();
+            if (err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, results);
+        });
     });
-  });
+};
+
+// Get all posts
+exports.getPosts = function(callback) {
+    var sql = "select post.pid, post.uid, category.catid, category.catname, post.ptitle, post.pdescription from post, category WHERE post.catid = category.catid";
+    // get a connection from the pool
+    pool.getConnection(function(err, connection) {
+        if (err) {
+            console.log(err);
+            callback(true);
+            return;
+        }
+        // make the query
+        connection.query(sql, function(err, results) {
+            connection.release();
+            if (err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, results);
+        });
+    });
 };
 
 // exports.getCategories = function(city, callback) {

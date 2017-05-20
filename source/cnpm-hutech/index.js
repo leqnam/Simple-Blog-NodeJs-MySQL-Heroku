@@ -1,13 +1,12 @@
-
 var express = require('express'),
-  moment = require('moment'),
-  _ = require('underscore'),
-  path = require('path'),
-  fs = require('fs'),
-  md5 = require('./configs/md5.js'),
-  app = express();
+    moment = require('moment'),
+    _ = require('underscore'),
+    path = require('path'),
+    fs = require('fs'),
+    md5 = require('./configs/md5.js'),
+    app = express();
 
-var postsController = require('./routers/post.js');
+
 
 // The information showed about the poster
 var userEmail = 'leqnam@live.com';
@@ -25,8 +24,8 @@ app.set('view engine', 'ejs');
 
 app.locals._ = _;
 
-app.locals.formatTime = function (time) {
-  return moment(time).format('MMMM Do YYYY, h:mm a');
+app.locals.formatTime = function(time) {
+    return moment(time).format('MMMM Do YYYY, h:mm a');
 };
 
 app.locals.hex_md5 = md5.hex_md5;
@@ -34,13 +33,14 @@ app.locals.userEmail = userEmail;
 app.locals.userDisplayName = userDisplayName;
 app.locals.userDescription = userDescription;
 
-app.use('/', postsController);
+var homeController = require('./routers/home.js');
+app.use('/', homeController);
 
 // dynamically include routes (routers)
-fs.readdirSync('./routers').forEach(function (file) {
-  var api = '/' + file.substr(0, file.lastIndexOf('.'));
-  var url = require('./routers/' + file);
-  app.use(api, url);
+fs.readdirSync('./routers').forEach(function(file) {
+    var api = '/' + file.substr(0, file.lastIndexOf('.'));
+    var url = require('./routers/' + file);
+    app.use(api, url);
 
 });
 
@@ -48,6 +48,6 @@ fs.readdirSync('./routers').forEach(function (file) {
 //app.get('/home',postsController.index); Old way
 
 
-app.listen(app.get('port'), function () {
-  console.log('Node app is running on port', app.get('port'));
+app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
 });
