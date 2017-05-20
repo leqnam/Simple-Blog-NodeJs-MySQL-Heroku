@@ -47,8 +47,7 @@ exports.getCategories = function(callback) {
 
 // Get all posts
 exports.getPosts = function(callback) {
-    //var sql = "select post.pid, post.uid, category.catid, category.catname, post.ptitle, post.pdescription from post, category WHERE post.catid = category.catid";
-    var sql = "select * from post";
+    var sql = "select post.pid, post.uid, category.catid, category.catname, post.ptitle, post.pdescription, post.pdate from post, category WHERE post.catid = category.catid";
     // get a connection from the pool
     pool.getConnection(function(err, connection) {
         if (err) {
@@ -65,6 +64,29 @@ exports.getPosts = function(callback) {
                 return;
             }
             callback(false, results);
+        });
+    });
+};
+
+// Get Single post
+exports.getPost = function(pid, callback) {
+    var sql = "select * from post WHERE pid = ?";
+    // get a connection from the pool
+    pool.getConnection(function(err, connection) {
+        if (err) {
+            console.log(err);
+            callback(true);
+            return;
+        }
+        // make the query
+        connection.query(sql, [pid], function(err, results) {
+            connection.release();
+            if (err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, results[0]);
         });
     });
 };

@@ -8,11 +8,11 @@
         <% posts.forEach(function(post) { %>
             <article class="home">
 
-                <span class="post-date"><%= post.PDATE %></span>
+                <span class="post-date"><%= post.pdate %></span>
 
                 <h2>
-                    <a href="<%= '/posts/' + post.PID %>">
-                        <%= post.PTITLE %>
+                    <a href="<%= '/post/' + post.pid %>">
+                        <%= post.ptitle %>
                     </a>
                 </h2>
 
