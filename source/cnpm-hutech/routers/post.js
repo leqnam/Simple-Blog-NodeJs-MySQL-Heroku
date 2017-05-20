@@ -14,6 +14,10 @@ router.get('/:pid', function(req, res) {
     });
 });
 
+router.get('/', function(req, res) {
+    return res.redirect('/');
+});
+
 module.exports = router;
 
 

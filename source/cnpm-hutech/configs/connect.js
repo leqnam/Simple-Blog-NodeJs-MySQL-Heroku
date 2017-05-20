@@ -8,7 +8,7 @@ var mysql = require('mysql');
 
 var pool;
 
-var dev = true;
+var dev = false;
 
 if (dev) {
     pool = mysql.createPool({
@@ -70,7 +70,30 @@ exports.getPosts = function(callback) {
 
 // Get Single post
 exports.getPost = function(pid, callback) {
-    var sql = "select * from post WHERE pid = ?";
+    var sql = "SELECT post.PID, post.UID, post.CATID, post.PTITLE, post.PDESCRIPTION, post.PDATE,post.PASSCODE,post.PCONTENT,post.PMETADATA,user.UNAME,user.UID,user.UMAIL,category.CATNAME FROM post INNER JOIN `user` ON post.UID = `user`.UID INNER JOIN category ON post.CATID = category.CATID where post.PID = ?";
+    // get a connection from the pool
+    pool.getConnection(function(err, connection) {
+        if (err) {
+            console.log(err);
+            callback(true);
+            return;
+        }
+        // make the query
+        connection.query(sql, [pid], function(err, results) {
+            connection.release();
+            if (err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, results[0]);
+        });
+    });
+};
+
+// Get comment by PID
+exports.getPost = function(pid, callback) {
+    var sql = "SELECT comment.CID,comment.PID,comment.UID,comment.CDATE,comment.CCOMMENT,user.UNAME,user.UMAIL FROM comment INNER JOIN user ON comment.UID = user.UID where PID = ?";
     // get a connection from the pool
     pool.getConnection(function(err, connection) {
         if (err) {
