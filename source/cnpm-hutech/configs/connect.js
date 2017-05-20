@@ -8,7 +8,7 @@ var mysql = require('mysql');
 
 var pool;
 
-var dev = true;
+var dev = false;
 
 if (dev) {
     pool = mysql.createPool({
@@ -126,6 +126,26 @@ exports.getPostComment = function(pid, callback) {
 //       callback(false, results);
 //     });
 //   });
+// };
+
+//
+// exports.executeQuery=function(query,callback){
+//     pool.getConnection(function(err,connection){
+//         if (err) {
+//           connection.release();
+//           throw err;
+//         }   
+//         connection.query(query,function(err,rows){
+//             connection.release();
+//             if(!err) {
+//                 callback(null, {rows: rows});
+//             }           
+//         });
+//         connection.on('error', function(err) {      
+//               throw err;
+//               return;     
+//         });
+//     });
 // };
 
 // To-do: will use mysql-model to map the model schema

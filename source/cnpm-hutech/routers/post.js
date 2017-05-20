@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/:pid', function(req, res) {
-    db.getPost(1, function(err, results) {
+    db.getPost(req.params.pid, function(err, results) {
         if (err) {
             res.send(500, "Lỗi cmnr :(");
             return;
