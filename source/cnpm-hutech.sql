@@ -90,6 +90,15 @@ CREATE TABLE `post` (
 -- ----------------------------
 INSERT INTO `post` VALUES ('1', '1', '7', 'Cau Hoi Trac Nghiem Tham Khao TMDT', null, '2017-05-02 14:00:24', null, 'Các bạn bấm dzô đây để tải về: http://www.mediafire.com/view/?h0ad8bgdwo4iqxt . Nguồn: Blog 10cth1-2 HUTECH (http://10cth12.nready.net/home/read.php?640)', null);
 INSERT INTO `post` VALUES ('2', '1', '7', 'Tài liệu môn Phần mềm nguồn mở và Thuơng mại điện tử', null, '2017-05-04 14:04:51', null, 'Bấm vào đây để tải: http://www.mediafire.com/?8ch6we2va5x67 . Nguồn: http://10cth12.nready.net/home/read.php?627', null);
+INSERT INTO `post` VALUES ('3', '1', '6', 'Cách vẽ mô hình BFD', null, '2017-05-04 14:04:51', null, 'Bấm vào đây để tải: http://www.mediafire.com/?8ch6we2va5x67 . Nguồn: http://10cth12.nready.net/home/read.php?627', null);
+INSERT INTO `post` VALUES ('4', '1', '6', 'Cách vẽ mô hình DFD và ERF', null, '2017-05-05 14:04:51', null, 'Bấm vào đây để tải: http://www.mediafire.com/?8ch6we2va5x67 . Nguồn: http://10cth12.nready.net/home/read.php?627', null);
+INSERT INTO `post` VALUES ('5', '1', '6', 'Thiết kế mô hình dữ dữ liệu', null, '2017-05-06 14:04:51', null, 'Bấm vào đây để tải: http://www.mediafire.com/?8ch6we2va5x67 . Nguồn: http://10cth12.nready.net/home/read.php?627', null);
+INSERT INTO `post` VALUES ('6', '1', '5', 'OOP là gì?', null, '2017-05-04 14:04:51', null, 'Bấm vào đây để tải: http://www.mediafire.com/?8ch6we2va5x67 . Nguồn: http://10cth12.nready.net/home/read.php?627', null);
+INSERT INTO `post` VALUES ('7', '1', '5', 'Code mẫu quản lí sinh viên', null, '2017-05-04 14:04:51', null, 'Bấm vào đây để tải: http://www.mediafire.com/?8ch6we2va5x67 . Nguồn: http://10cth12.nready.net/home/read.php?627', null);
+INSERT INTO `post` VALUES ('8', '1', '4', 'C: Tìm số nguyên tố', null, '2017-05-04 14:04:51', null, 'Bấm vào đây để tải: http://www.mediafire.com/?8ch6we2va5x67 . Nguồn: http://10cth12.nready.net/home/read.php?627', null);
+INSERT INTO `post` VALUES ('9', '1', '4', 'Tìm bội chung trong mảng số nguyên', null, '2017-05-04 14:04:51', null, 'Bấm vào đây để tải: http://www.mediafire.com/?8ch6we2va5x67 . Nguồn: http://10cth12.nready.net/home/read.php?627', null);
+INSERT INTO `post` VALUES ('10', '1', '4', 'Cây nhị phân', null, '2017-05-04 14:04:51', null, 'Bấm vào đây để tải: http://www.mediafire.com/?8ch6we2va5x67 . Nguồn: http://10cth12.nready.net/home/read.php?627', null);
+INSERT INTO `post` VALUES ('11', '1', '1', 'Quy trình phát triển phần mềm', null, '2017-05-04 14:04:51', null, 'Bấm vào đây để tải: http://www.mediafire.com/?8ch6we2va5x67 . Nguồn: http://10cth12.nready.net/home/read.php?627', null);
 
 -- ----------------------------
 -- Table structure for user
