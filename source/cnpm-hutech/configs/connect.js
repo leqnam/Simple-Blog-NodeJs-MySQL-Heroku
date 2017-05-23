@@ -4,7 +4,7 @@ var mysql = require('mysql');
 
 // var connection = mysql.createConnection('mysql://user:pass@host/db?debug=true&charset=BIG5_CHINESE_CI&timezone=-0700');
 
-// Use Pooling connections 
+// Use Pooling connections
 
 var pool;
 
@@ -46,24 +46,43 @@ exports.getCategories = function(callback) {
 };
 
 // Get all posts
-exports.getPosts = function(callback) {
-    var sql = "select post.pid, post.uid, category.catid, category.catname, post.ptitle, post.pdescription, post.pdate from post, category WHERE post.catid = category.catid";
-    // get a connection from the pool
-    pool.getConnection(function(err, connection) {
+// exports.getPosts = function(callback) {
+//     var sql = "select post.pid, post.uid, category.catid, category.catname, post.ptitle, post.pdescription, post.pdate from post, category WHERE post.catid = category.catid";
+//     // get a connection from the pool
+//     pool.getConnection(function(err, connection) {
+//         if (err) {
+//             console.log(err);
+//             callback(true);
+//             return;
+//         }
+//         // make the query
+//         connection.query(sql, function(err, results) {
+//             connection.release();
+//             if (err) {
+//                 console.log(err);
+//                 callback(true);
+//                 return;
+//             }
+//             callback(false, results);
+//         });
+//     });
+// };
+var query = "select post.pid, post.uid, category.catid, category.catname, post.ptitle, post.pdescription, post.pdate from post, category WHERE post.catid = category.catid";
+exports.getPosts=function(callback){
+    pool.getConnection(function(err,connection){
         if (err) {
-            console.log(err);
-            callback(true);
-            return;
+          callback(true);
+          return;
         }
-        // make the query
-        connection.query(sql, function(err, results) {
+        connection.query(query,function(err,results){
             connection.release();
-            if (err) {
-                console.log(err);
-                callback(true);
-                return;
+            if(!err) {
+                callback(false, {rows: results});
             }
-            callback(false, results);
+        });
+        connection.on('error', function(err) {
+              callback(true);
+              return;
         });
     });
 };
@@ -134,16 +153,16 @@ exports.getPostComment = function(pid, callback) {
 //         if (err) {
 //           connection.release();
 //           throw err;
-//         }   
+//         }
 //         connection.query(query,function(err,rows){
 //             connection.release();
 //             if(!err) {
 //                 callback(null, {rows: rows});
-//             }           
+//             }
 //         });
-//         connection.on('error', function(err) {      
+//         connection.on('error', function(err) {
 //               throw err;
-//               return;     
+//               return;
 //         });
 //     });
 // };

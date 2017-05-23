@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
             return;
         }
         res.render('pages/home', {
-            posts: results
+            posts: results.rows
         });
     });
 });
