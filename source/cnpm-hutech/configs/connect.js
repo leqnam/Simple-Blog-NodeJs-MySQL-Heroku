@@ -26,6 +26,9 @@ if (dev) {
 var message = {
     query_null: {
         "code": 500, "message": "Something went wrong."
+    },
+    comment_null: {
+        "code": 500, "message": "No comments."
     }
 };
 
@@ -91,16 +94,16 @@ exports.getPostComment = function(pid, callback) {
     var sql = "SELECT comment.CID,comment.PID,comment.UID,comment.CDATE,comment.CCOMMENT,user.UNAME,user.UMAIL FROM comment INNER JOIN user ON comment.UID = user.UID where PID = ?";
     pool.getConnection(function(err, connection) {
         if (err) {
-            callback(true, message.query_null);
+            callback(true, message.comment_null);
             return;
         }
         connection.query(sql, [pid], function(err, results) {
             connection.release();
-            if (err || !results[0]) {
-                callback(true, message.query_null);
+            if (err || !results) {
+                callback(true, message.comment_null);
                 return;
             }
-            callback(false, results[0]);
+            callback(false, results);
         });
     });
 };
