@@ -8,7 +8,7 @@ var mysql = require('mysql');
 
 var pool;
 
-var dev = false;
+var dev = true;
 
 if (dev) {
     pool = mysql.createPool({
