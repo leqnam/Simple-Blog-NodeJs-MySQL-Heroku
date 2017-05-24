@@ -2,10 +2,13 @@ var db = require('../configs/connect');
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res) {
-    db.getPosts(function(err, results) {
+router.get('/', function (req, res) {
+    db.getPosts(function (err, results) {
         if (err) {
-            res.send(500, "Lỗi cmnr :(");
+            res.render('pages/error', {
+                code: results.code,
+                message: results.message
+            });
             return;
         }
         res.render('pages/home', {

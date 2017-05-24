@@ -8,7 +8,7 @@ var mysql = require('mysql');
 
 var pool;
 
-var dev = false;
+var dev = true;
 
 if (dev) {
     pool = mysql.createPool({
@@ -32,14 +32,21 @@ var message = {
 // Get Category records
 exports.getCategories = function(callback) {
     var sql = "SELECT * FROM category";
+    // get a connection from the pool
     pool.getConnection(function(err, connection) {
         if (err) {
+            console.log(err);
             callback(true, message.query_null);
             return;
         }
         connection.query(sql, function(err, results) {
             connection.release();
-            if (err || !results) {
+            if (err) {
+                console.log(err);
+                callback(true, message.query_null);
+                return;
+            }
+            if (!results){
                 callback(true, message.query_null);
                 return;
             }
@@ -51,14 +58,22 @@ exports.getCategories = function(callback) {
 // Get all posts
 exports.getPosts = function(callback) {
     var sql = "select post.pid, post.uid, category.catid, category.catname, post.ptitle, post.pdescription, post.pdate from post, category WHERE post.catid = category.catid";
+    // get a connection from the pool
     pool.getConnection(function(err, connection) {
         if (err) {
+            console.log(err);
             callback(true, message.query_null);
             return;
         }
+        // make the query
         connection.query(sql, function(err, results) {
             connection.release();
-            if (err || !results) {
+            if (err) {
+                console.log(err);
+                callback(true, message.query_null);
+                return;
+            }
+            if (!results){
                 callback(true, message.query_null);
                 return;
             }
@@ -72,12 +87,18 @@ exports.getPost = function(pid, callback) {
     var sql = "SELECT post.PID, post.UID, post.CATID, post.PTITLE, post.PDESCRIPTION, post.PDATE,post.PASSCODE,post.PCONTENT,post.PMETADATA,user.UNAME,user.UID,user.UMAIL,category.CATNAME FROM post INNER JOIN user ON post.UID = user.UID INNER JOIN category ON post.CATID = category.CATID where post.PID = ?";
     pool.getConnection(function(err, connection) {
         if (err) {
+            console.log(err);
             callback(true, message.query_null);
             return;
         }
         connection.query(sql, [pid], function(err, results) {
             connection.release();
-            if (err || !results[0]) {
+            if (err) {
+                console.log(err);
+                callback(true, message.query_null);
+                return;
+            }
+            if (!results[0]){
                 callback(true, message.query_null);
                 return;
             }
@@ -89,14 +110,18 @@ exports.getPost = function(pid, callback) {
 // Get comment by PID
 exports.getPostComment = function(pid, callback) {
     var sql = "SELECT comment.CID,comment.PID,comment.UID,comment.CDATE,comment.CCOMMENT,user.UNAME,user.UMAIL FROM comment INNER JOIN user ON comment.UID = user.UID where PID = ?";
+    // get a connection from the pool
     pool.getConnection(function(err, connection) {
         if (err) {
+            console.log(err);
             callback(true, message.query_null);
             return;
         }
+        // make the query
         connection.query(sql, [pid], function(err, results) {
             connection.release();
-            if (err || !results[0]) {
+            if (err) {
+                console.log(err);
                 callback(true, message.query_null);
                 return;
             }
