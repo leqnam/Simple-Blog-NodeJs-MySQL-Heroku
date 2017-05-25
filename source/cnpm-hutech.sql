@@ -52,6 +52,8 @@ CREATE TABLE `comment` (
   `UID` int(11) DEFAULT NULL,
   `CDATE` datetime DEFAULT NULL,
   `CCOMMENT` text,
+  `CVOTEUP` int(11) DEFAULT NULL,
+  `CVOTEDOWN` int(11) DEFAULT NULL,
   PRIMARY KEY (`CID`),
   KEY `FK_REFERENCE_4` (`PID`),
   KEY `FK_REFERENCE_7` (`UID`),
@@ -62,16 +64,16 @@ CREATE TABLE `comment` (
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
-INSERT INTO `comment` VALUES ('1', '1', '1', '2017-05-12 17:52:03', 'Hay vá bạn ơi <3');
-INSERT INTO `comment` VALUES ('2', '11', '1', '2017-05-14 17:52:03', 'Thank nhoa. Hay vá');
-INSERT INTO `comment` VALUES ('3', '11', '1', '2017-05-14 17:52:03', 'Thank nhoa ahihi Hay vá');
-INSERT INTO `comment` VALUES ('4', '10', '1', '2017-05-14 17:52:03', ' Hay vá  Hay vá  Hay vá');
-INSERT INTO `comment` VALUES ('5', '10', '1', '2017-05-14 17:52:03', 'Thank nhoa hay đó ahihi');
-INSERT INTO `comment` VALUES ('6', '10', '1', '2017-05-14 17:52:03', 'Thank nhoa ahihihi');
-INSERT INTO `comment` VALUES ('7', '9', '1', '2017-05-14 17:52:03', 'Thank nhoa  Hay vá');
-INSERT INTO `comment` VALUES ('8', '9', '1', '2017-05-14 17:52:03', ' Hay váThank nhoa');
-INSERT INTO `comment` VALUES ('9', '9', '1', '2017-05-14 17:52:03', 'Thank nhoa');
-INSERT INTO `comment` VALUES ('10', '1', '1', '2017-05-15 17:52:03', 'Welcome :)');
+INSERT INTO `comment` VALUES ('1', '1', '1', '2017-05-12 17:52:03', 'Hay vá bạn ơi <3', '2', '0');
+INSERT INTO `comment` VALUES ('2', '11', '1', '2017-05-14 17:52:03', 'Thank nhoa. Hay vá', '4', '0');
+INSERT INTO `comment` VALUES ('3', '11', '1', '2017-05-14 17:52:03', 'Thank nhoa ahihi Hay vá', '1', '0');
+INSERT INTO `comment` VALUES ('4', '10', '1', '2017-05-14 17:52:03', ' Hay vá  Hay vá  Hay vá', '6', '2');
+INSERT INTO `comment` VALUES ('5', '10', '1', '2017-05-14 17:52:03', 'Thank nhoa hay đó ahihi', '5', '0');
+INSERT INTO `comment` VALUES ('6', '10', '1', '2017-05-14 17:52:03', 'Thank nhoa ahihihi', '3', '3');
+INSERT INTO `comment` VALUES ('7', '9', '1', '2017-05-14 17:52:03', 'Thank nhoa  Hay vá', '2', '0');
+INSERT INTO `comment` VALUES ('8', '9', '1', '2017-05-14 17:52:03', ' Hay váThank nhoa', '4', '0');
+INSERT INTO `comment` VALUES ('9', '9', '1', '2017-05-14 17:52:03', 'Thank nhoa', '1', '0');
+INSERT INTO `comment` VALUES ('10', '1', '1', '2017-05-15 17:52:03', 'Welcome :)', '4', '0');
 
 -- ----------------------------
 -- Table structure for post

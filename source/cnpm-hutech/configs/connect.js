@@ -91,7 +91,7 @@ exports.getPost = function(pid, callback) {
 
 // Get comment by PID
 exports.getPostComment = function(pid, callback) {
-    var sql = "SELECT comment.CID,comment.PID,comment.UID,comment.CDATE,comment.CCOMMENT,user.UNAME,user.UMAIL FROM comment INNER JOIN user ON comment.UID = user.UID where PID = ?";
+    var sql = "SELECT comment.CID,comment.PID,comment.UID,comment.CDATE,comment.CCOMMENT, comment.CVOTEUP, comment.CVOTEDOWN , user.UNAME,user.UMAIL FROM comment INNER JOIN user ON comment.UID = user.UID where PID = ? order by comment.CDATE DESC ";
     pool.getConnection(function(err, connection) {
         if (err) {
             callback(true, message.comment_null);

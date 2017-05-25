@@ -17,7 +17,7 @@
                 <div class="panel-body">
                   <header class="text-left">
                     <div class="comment-user"><i class="fa fa-user"></i> <%= comment.UNAME %></div>
-                    <time class="comment-date"><i class="fa fa-clock-o"></i> <%= comment.CDATE %></time>
+                    <time class="comment-date"><i class="fa fa-clock-o"></i> <%= formatTime(comment.CDATE) %></time>
                   </header>
                   <div class="comment-post">
                     <p>
