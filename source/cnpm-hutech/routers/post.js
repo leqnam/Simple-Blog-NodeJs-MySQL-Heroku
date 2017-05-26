@@ -20,6 +20,15 @@ router.get('/:pid', function (req, res) {
     });
 });
 
+router.post('/comment', function (req, res) {
+   console.log(req.body);
+//   connection.query("INSERT into sample SET ?",req.body,function  (err,result) {
+//		if (err) throw err;
+//		res.send("Created "+JSON.stringify(result));
+//	});
+	res.send("Received "+ JSON.stringify(req.body));
+});
+
 router.get('/', function (req, res) {
     return res.redirect('/');
 });

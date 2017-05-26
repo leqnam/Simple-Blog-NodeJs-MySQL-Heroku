@@ -4,6 +4,7 @@ var express = require('express'),
     path = require('path'),
     fs = require('fs'),
     md5 = require('./configs/md5.js'),
+    bodyParser = require('body-parser'),
     app = express();
 
 
@@ -21,6 +22,11 @@ app.use(express.static(__dirname + '/public'));
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+// parse application/x-www-form-urlencoded 
+app.use(bodyParser.urlencoded({ extended: false }));
+ 
+// parse application/json 
+app.use(bodyParser.json());
 
 app.locals._ = _;
 
