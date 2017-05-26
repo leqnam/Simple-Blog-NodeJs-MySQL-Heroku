@@ -13,6 +13,7 @@ router.get('/:pid', function (req, res) {
                 return;
             }
             res.render('pages/post', {
+                id: req.params.pid,
                 post: results,
                 comments: comments
             });
@@ -21,9 +22,9 @@ router.get('/:pid', function (req, res) {
 });
 
 router.post('/comment', function (req, res) {
-    console.log(req.body.comment);
-    db.postComment(req.params.pid,req.body.comment, function (err, results) {
-        res.send("Received "+ JSON.stringify(err));
+    db.postComment(req.body.pid, req.body.comment, function (err, results) {
+        res.send("<script>location.reload();</script>");
+        //res.send("Received "+ JSON.stringify(results));
 //        db.getPostComment(req.params.pid, function (err2, comments) {
 //            if (err) {
 //                res.render('pages/error', {

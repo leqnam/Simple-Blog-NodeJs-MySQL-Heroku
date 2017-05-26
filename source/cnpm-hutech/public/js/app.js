@@ -27,7 +27,7 @@ $(document).ready(function () {
     $("#submit").on("submit",function (e) {
         e.preventDefault();
         $("#cmm").val($('#summernote').summernote('code'));
-        $.post("http://localhost:5000/post/comment",$(this).serialize(), function( data ) {
+        $.post("http://localhost:5000/post/comment/",$(this).serialize(), function( data ) {
           console.log(data);
         });
 	 });
