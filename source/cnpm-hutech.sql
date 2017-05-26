@@ -128,4 +128,6 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'quantri', '1234', 'team@nready.net', null);
+INSERT INTO `user` VALUES ('2', 'khach', '1234', 'team@nready.net', null);
+
 SET FOREIGN_KEY_CHECKS=1;

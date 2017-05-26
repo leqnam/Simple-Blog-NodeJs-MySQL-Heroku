@@ -107,7 +107,24 @@ exports.getPostComment = function(pid, callback) {
         });
     });
 };
-
+// Post comment by PID
+exports.postComment = function(pid,comment, callback) {
+    var sql = "INSERT INTO `comment` VALUES (0, ?, '2', ?, '2017-05-15 17:52:03', '0', '0');";
+    pool.getConnection(function(err, connection) {
+        if (err) {
+            callback(true, message.comment_null);
+            return;
+        }
+        connection.query(sql, [pid,comment], function(err, results) {
+            connection.release();
+            if (err || !results) {
+                callback(true, message.comment_null);
+                return;
+            }
+            callback(false, results);
+        });
+    });
+};
 // exports.getCategories = function(city, callback) {
 //   var sql = "SELECT * FROM category";
 //   // get a connection from the pool

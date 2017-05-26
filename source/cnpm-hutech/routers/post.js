@@ -21,12 +21,24 @@ router.get('/:pid', function (req, res) {
 });
 
 router.post('/comment', function (req, res) {
-   console.log(req.body);
-//   connection.query("INSERT into sample SET ?",req.body,function  (err,result) {
-//		if (err) throw err;
-//		res.send("Created "+JSON.stringify(result));
-//	});
-	res.send("Received "+ JSON.stringify(req.body));
+    console.log(req.body.comment);
+    db.postComment(req.params.pid,req.body.comment, function (err, results) {
+        res.send("Received "+ JSON.stringify(err));
+//        db.getPostComment(req.params.pid, function (err2, comments) {
+//            if (err) {
+//                res.render('pages/error', {
+//                    code: results.code,
+//                    message: results.message
+//                });
+//                return;
+//            }
+//            res.render('pages/post', {
+//                post: results,
+//                comments: comments
+//            });
+//        });
+    });
+	//res.send("Received "+ JSON.stringify(req.body.comment));
 });
 
 router.get('/', function (req, res) {

@@ -25,9 +25,10 @@ $(document).ready(function () {
     });
     
     $("#submit").on("submit",function (e) {
-	 		e.preventDefault();
-	 		$.post("http://localhost:5000/post/comment",$($('#summernote').summernote('code')).serialize(), function( data ) {
-			  console.log(data);
-			});
-	 	});
+        e.preventDefault();
+        $("#cmm").val($('#summernote').summernote('code'));
+        $.post("http://localhost:5000/post/comment",$(this).serialize(), function( data ) {
+          console.log(data);
+        });
+	 });
 });
