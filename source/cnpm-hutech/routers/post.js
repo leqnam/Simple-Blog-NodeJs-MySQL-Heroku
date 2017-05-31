@@ -23,7 +23,7 @@ router.get('/:pid', function (req, res) {
 
 router.post('/comment', function (req, res) {
     db.postComment(req.body.pid, req.body.comment, function (err, results) {
-        res.send("<script>location.reload();</script>");
+        res.send(results);
         //res.send("Received "+ JSON.stringify(results));
 //        db.getPostComment(req.params.pid, function (err2, comments) {
 //            if (err) {

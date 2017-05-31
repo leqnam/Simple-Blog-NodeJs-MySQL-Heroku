@@ -8,7 +8,7 @@ var mysql = require('mysql');
 
 var pool;
 
-var dev = false;
+var dev = true;
 
 if (dev) {
     pool = mysql.createPool({
@@ -109,8 +109,9 @@ exports.getPostComment = function(pid, callback) {
 };
 // Post comment by PID
 exports.postComment = function(pid,comment, callback) {
+    var date = new Date().toISOString();
+    var sql = "INSERT INTO `comment` VALUES (0, '" + pid + "', '1', '" + date + "', '" + comment + "', '0', '0');";
     
-    var sql = "INSERT INTO `comment` VALUES (0, '" + pid + "', '1', '" + Date() + "', '" + comment + "', '0', '0');";
     pool.getConnection(function(err, connection) {
         if (err) {
             callback(true, err);
@@ -122,7 +123,7 @@ exports.postComment = function(pid,comment, callback) {
                 callback(true, sql);
                 return;
             }
-            callback(false, results);
+            callback(false, sql);
         });
     });
 };

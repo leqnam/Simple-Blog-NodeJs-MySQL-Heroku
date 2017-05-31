@@ -64,7 +64,7 @@ CREATE TABLE `comment` (
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
-INSERT INTO `comment` VALUES ('1', '1', '1', '2017-05-12 17:52:03', 'Hay vá bạn ơi <3', '2', '0');
+/*INSERT INTO `comment` VALUES ('1', '1', '1', '2017-05-12 17:52:03', 'Hay vá bạn ơi <3', '2', '0');
 INSERT INTO `comment` VALUES ('2', '11', '1', '2017-05-14 17:52:03', 'Thank nhoa. Hay vá', '4', '0');
 INSERT INTO `comment` VALUES ('3', '11', '1', '2017-05-14 17:52:03', 'Thank nhoa ahihi Hay vá', '1', '0');
 INSERT INTO `comment` VALUES ('4', '10', '1', '2017-05-14 17:52:03', ' Hay vá  Hay vá  Hay vá', '6', '2');
@@ -74,7 +74,7 @@ INSERT INTO `comment` VALUES ('7', '9', '1', '2017-05-14 17:52:03', 'Thank nhoa 
 INSERT INTO `comment` VALUES ('8', '9', '1', '2017-05-14 17:52:03', ' Hay váThank nhoa', '4', '0');
 INSERT INTO `comment` VALUES ('9', '9', '1', '2017-05-14 17:52:03', 'Thank nhoa', '1', '0');
 INSERT INTO `comment` VALUES ('10', '1', '1', '2017-05-15 17:52:03', 'Welcome :)', '4', '0');
-
+*/
 -- ----------------------------
 -- Table structure for post
 -- ----------------------------

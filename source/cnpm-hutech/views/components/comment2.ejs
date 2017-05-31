@@ -4,7 +4,7 @@
       <h2 class="page-header">Comments</h2>
         
         <div class="panel post comment-bg">
-            <form id="submit" method="post" action="post/comment">
+            <form id="submit" method="post" action="/post/comment">
                 <div class="post-description">
                     <div id="summernote"></div>
                     <input type="hidden" id="cmm" name="comment"><br>
@@ -37,7 +37,7 @@
                     </div>
                 </div> 
                 <div class="post-description"> 
-                    <p><%= comment.CCOMMENT %></p>
+                    <%- comment.CCOMMENT %>
                     <div class="stats">
                         <a class="btn btn-default stat-item">
                             <i class="fa fa-thumbs-up icon"></i><%= comment.CVOTEUP %>
