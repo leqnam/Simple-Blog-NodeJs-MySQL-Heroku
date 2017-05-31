@@ -51,7 +51,7 @@ CREATE TABLE `comment` (
   `PID` bigint(20) DEFAULT NULL,
   `UID` int(11) DEFAULT NULL,
   `CDATE` datetime DEFAULT NULL,
-  `CCOMMENT` text,
+  `CCOMMENT` longtext,
   `CVOTEUP` int(11) DEFAULT NULL,
   `CVOTEDOWN` int(11) DEFAULT NULL,
   PRIMARY KEY (`CID`),

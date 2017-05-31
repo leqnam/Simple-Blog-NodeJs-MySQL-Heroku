@@ -22,13 +22,23 @@ $(document).ready(function () {
         minHeight: 50, // set minimum height of editor
         maxHeight: null, // set maximum height of editor
         focus: true // set focus to editable area after initializing summernote
+        
     });
-    
-    $("#submit").on("submit",function (e) {
+
+    $("#submit").on("submit", function (e) {
         e.preventDefault();
-        $("#cmm").val($('#summernote').summernote('code'));
-        $.post("http://localhost:5000/post/comment/",$(this).serialize(), function( data ) {
-          console.log(data);
-        });
-	 });
+        if (!$('#summernote').summernote('isEmpty')) {
+            $("#cmm").val($('#summernote').summernote('code'));
+
+            $.post("http://localhost:5000/post/comment/", $(this).serialize(), function (data) {
+                    //console.log(data);
+                })
+                .done(function () {
+                    document.location.reload();
+                })
+                .fail(function () {
+                    //alert("error");
+                });
+        }
+    });
 });

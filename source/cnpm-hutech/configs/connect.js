@@ -24,6 +24,9 @@ if (dev) {
 
 // Error messages
 var message = {
+    query_error: {
+        "code": 500, "message": "Something went wrong."
+    },
     query_null: {
         "code": 500, "message": "Something went wrong."
     },
@@ -72,13 +75,13 @@ exports.getPosts = function(callback) {
 
 // Get Single post by PID
 exports.getPost = function(pid, callback) {
-    var sql = "SELECT post.PID, post.UID, post.CATID, post.PTITLE, post.PDESCRIPTION, post.PDATE,post.PASSCODE,post.PCONTENT,post.PMETADATA,user.UNAME,user.UID,user.UMAIL,category.CATNAME FROM post INNER JOIN user ON post.UID = user.UID INNER JOIN category ON post.CATID = category.CATID where post.PID = ?";
+    var sql = "SELECT post.PID, post.UID, post.CATID, post.PTITLE, post.PDESCRIPTION, post.PDATE,post.PASSCODE,post.PCONTENT,post.PMETADATA,user.UNAME,user.UID,user.UMAIL,category.CATNAME FROM post INNER JOIN user ON post.UID = user.UID INNER JOIN category ON post.CATID = category.CATID where post.PID = " + pid;
     pool.getConnection(function(err, connection) {
         if (err) {
             callback(true, message.query_null);
             return;
         }
-        connection.query(sql, [pid], function(err, results) {
+        connection.query(sql, function(err, results) {
             connection.release();
             if (err || !results[0]) {
                 callback(true, message.query_null);
@@ -91,13 +94,13 @@ exports.getPost = function(pid, callback) {
 
 // Get comment by PID
 exports.getPostComment = function(pid, callback) {
-    var sql = "SELECT comment.CID,comment.PID,comment.UID,comment.CDATE,comment.CCOMMENT, comment.CVOTEUP, comment.CVOTEDOWN , user.UNAME,user.UMAIL FROM comment INNER JOIN user ON comment.UID = user.UID where PID = ? order by comment.CDATE DESC ";
+    var sql = "SELECT comment.CID,comment.PID,comment.UID,comment.CDATE,comment.CCOMMENT, comment.CVOTEUP, comment.CVOTEDOWN , user.UNAME,user.UMAIL FROM comment INNER JOIN user ON comment.UID = user.UID where PID = " + pid + " order by comment.CDATE DESC ";
     pool.getConnection(function(err, connection) {
         if (err) {
             callback(true, message.comment_null);
             return;
         }
-        connection.query(sql, [pid], function(err, results) {
+        connection.query(sql, function(err, results) {
             connection.release();
             if (err || !results) {
                 callback(true, message.comment_null);
@@ -114,16 +117,16 @@ exports.postComment = function(pid,comment, callback) {
     
     pool.getConnection(function(err, connection) {
         if (err) {
-            callback(true, err);
+            callback(true, message.query_error);
             return;
         }
         connection.query(sql, function(err, results) {
             connection.release();
             if (err || !results) {
-                callback(true, sql);
+                callback(true, message.query_error);
                 return;
             }
-            callback(false, sql);
+            callback(false, results);
         });
     });
 };

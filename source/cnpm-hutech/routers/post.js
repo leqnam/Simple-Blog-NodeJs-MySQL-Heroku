@@ -23,23 +23,12 @@ router.get('/:pid', function (req, res) {
 
 router.post('/comment', function (req, res) {
     db.postComment(req.body.pid, req.body.comment, function (err, results) {
-        res.send(results);
+        if(!err)
+        {
+            res.send(200);
+        }
         //res.send("Received "+ JSON.stringify(results));
-//        db.getPostComment(req.params.pid, function (err2, comments) {
-//            if (err) {
-//                res.render('pages/error', {
-//                    code: results.code,
-//                    message: results.message
-//                });
-//                return;
-//            }
-//            res.render('pages/post', {
-//                post: results,
-//                comments: comments
-//            });
-//        });
     });
-	//res.send("Received "+ JSON.stringify(req.body.comment));
 });
 
 router.get('/', function (req, res) {
