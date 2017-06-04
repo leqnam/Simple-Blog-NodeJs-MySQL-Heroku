@@ -1,0 +1,84 @@
+<% include ../components/header.ejs %>
+
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">
+                <%= post.entry_title %>
+            </li>
+        </ul>
+
+        <h2>
+            <%= post.entry_title %>
+        </h2>
+        <h6>
+            <a href="/user/"><span class="fa-stack fa-lg"><!-- i style="color:#e95c5a;" class="fa fa-circle fa-stack-2x"></i><i style="color:#fff;" class="fa fa-question fa-stack-1x"></i -->
+                            <img src=<%='https://secure.gravatar.com/avatar/' + hex_md5(post.user_email) + '?size=30' %> class="img-circle" /></span> <%= post.user_name %></a> •
+            <small class="hidden-xs"><span class="timeago"><%= formatTime(post.entry_date) %></span></small>
+        </h6>
+        <p>
+            <%- post.entry_content %>
+        </p>
+        <br>
+        <div class="col-md-1 col-sm-2 pull-right text-center">
+            <span class="badge">16</span><br>
+            <small>viewed</small>
+        </div>
+        <div class="col-md-1 col-sm-2 pull-right text-center">
+            <span class="badge">16</span><br>
+            <small>commented</small>
+        </div>
+
+        <div class="col-md-2 col-sm-2 pull-right text-center">
+            <a href="#" class="btn btn-primary btn-xs">Add comment</a>
+        </div>
+
+        <div class="col-md-2 col-sm-2 pull-right text-center">
+            <button type="submit" class="btn btn-xs btn-success">
+                <i class="fa fa-thumbs-up icon"></i>
+             </button>
+            <button type="submit" class="btn btn-xs btn-danger">
+                <i class="fa fa-thumbs-down icon"></i>
+             </button>
+        </div>
+
+        <br>
+        <hr>
+
+        <% comments.forEach(function(comment) { %>
+
+            <div class="panel panel-white post panel-shadow">
+                <div class="post-heading">
+                    <div class="pull-left image">
+                        <img src="https://secure.gravatar.com/avatar/<%= hex_md5(comment.user_email) %>?size=150" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="pull-left meta">
+                        <div class="title h5">
+                            <b><%= comment.user_name %></b>
+                        </div>
+                        <h6 class="text-muted time">
+                            <%= formatTime(comment.comment_date) %>
+                        </h6>
+                    </div>
+                </div>
+                <div class="post-description">
+                    <%- comment.comment_content %>
+                        <div class="stats">
+                            <a class="btn btn-default btn-success">
+                                <i class="fa fa-thumbs-up icon"></i>
+
+                            </a>
+                            <a class="btn btn-default btn-danger">
+                                <i class="fa fa-thumbs-down icon"></i>
+
+                            </a>
+                        </div>
+                </div>
+            </div>
+
+            <% }) %>
+
+                <hr>
+    </div>
+
+    <% include ../components/footer.ejs %>

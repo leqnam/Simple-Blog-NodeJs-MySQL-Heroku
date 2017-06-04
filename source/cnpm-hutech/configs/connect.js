@@ -8,7 +8,7 @@ var mysql = require('mysql');
 
 var pool;
 
-var dev = true;
+var dev = false;
 
 if (dev) {
     pool = mysql.createPool({
@@ -25,13 +25,16 @@ if (dev) {
 // Error messages
 var message = {
     query_error: {
-        "code": 500, "message": "Something went wrong."
+        "code": 500,
+        "message": "Something went wrong."
     },
     query_null: {
-        "code": 500, "message": "Something went wrong."
+        "code": 500,
+        "message": "Something went wrong."
     },
     comment_null: {
-        "code": 500, "message": "No comments."
+        "code": 500,
+        "message": "No comments."
     }
 };
 
@@ -111,10 +114,10 @@ exports.getPostComment = function(pid, callback) {
     });
 };
 // Post comment by PID
-exports.postComment = function(pid,comment, callback) {
+exports.postComment = function(pid, comment, callback) {
     var date = new Date().toISOString();
     var sql = "INSERT INTO `comment` VALUES (0, '" + pid + "', '1', '" + date + "', '" + comment + "', '0', '0');";
-    
+
     pool.getConnection(function(err, connection) {
         if (err) {
             callback(true, message.query_error);
